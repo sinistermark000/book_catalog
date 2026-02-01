@@ -5,7 +5,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'book_catalog.settings')
 
 django.setup()
 
-from books.models import Author, Book, BookDetail
+from books.models import Author, Books, BookDetail
 
 Author.objects.all().delete()
 Book.objects.all().delete()
