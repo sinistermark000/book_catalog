@@ -1,0 +1,26 @@
+{% extends 'books/base.html' %}
+
+{% block title %} Поиск книг{% endblock %}
+
+{% block content %}
+    <div class="search-container">
+        <div class="search-panel">
+            <h1>Поиск книги</h1>
+            <form method="GET" action="{% url 'search' %}" class="search-form">
+                <input type="text" name="q" placeholder="Введите название книги" class="search-input" autocomplete="off">
+            </form>
+        </div>
+        <div class="result-container">
+            {% if books %}
+                <h3>Результаты поиска: </h3>
+                <ul>
+                    {% for book in books %}
+                        <li><b><a href="{% url 'book_detail' book.id %}">{{ book.title }}</a></b></li>
+                    {% endfor %}
+                </ul>
+            {% elif request.GET.q %}
+                <h3>Ничего не найдено. </h3>
+           {% endif %}
+        </div>
+    </div>
+{% endblock %}

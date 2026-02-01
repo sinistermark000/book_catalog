@@ -1,0 +1,17 @@
+{% extends 'books/base.html' %}
+
+{% block title %}Каталог книг{% endblock %}
+
+{% block content %}
+    <div class="book-list">
+        {% for book in books %}
+            <a href="{% url 'book_detail' book.id %}" class="book-card">
+                <div class="book-info">
+                    <h2>{{ book.title }}</h2>
+                    <p><strong>Автор:</strong> {{book.author.name}}</p>
+                    <p>{{book.short_desc}}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
